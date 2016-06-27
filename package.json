@@ -36,7 +36,6 @@
   "dependencies": {
     "commander": "^2.9.0",
     "nightmare": "^2.5.2",
-    "node-linkedin": "^0.5.3",
     "superagent": "^2.0.0"
   },
   "devDependencies": {
