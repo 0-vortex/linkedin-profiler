@@ -1,0 +1,29 @@
+{
+  "name": "linkedin-profiler",
+  "version": "0.0.1",
+  "description": "LinkedIn profiler parser gets available information via api and outputs a json-resume.org schema compatible or schema-enhanced (opinionated) version",
+  "main": " ",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vrtxf/linkedin-profiler.git"
+  },
+  "keywords": [
+    "cli-app",
+    "cli",
+    "linkedin",
+    "profile",
+    "dev",
+    "build",
+    "tool",
+    "parser"
+  ],
+  "author": "TED Vortex <ted.vortex@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/vrtxf/linkedin-profiler/issues"
+  },
+  "homepage": "https://github.com/vrtxf/linkedin-profiler#readme"
+}
