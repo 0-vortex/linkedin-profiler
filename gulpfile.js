@@ -22,7 +22,10 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-    return gulp.src('lib/**/*.js')
+    return gulp.src([
+            'lib/**/*.js',
+            'cli/**/*.js'
+        ])
         .pipe(istanbul({
             includeUntested: true
         }))
