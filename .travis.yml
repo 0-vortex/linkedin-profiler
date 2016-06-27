@@ -9,6 +9,7 @@ node_js:
 before_script:
 - if (( "${TRAVIS_NODE_VERSION}" >= 6 )) && [ "$TRAVIS_BRANCH" = "master" ]; then export COVERAGE_REPORT=true; else echo $TRAVIS_NODE_VERSION; fi;
 - npm install -g gulp
+- npm install -g codecov
 
 after_success:
 - gulp stats
