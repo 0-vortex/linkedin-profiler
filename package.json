@@ -2,9 +2,16 @@
   "name": "linkedin-profiler",
   "version": "0.0.1",
   "description": "LinkedIn profiler parser gets available information via api and outputs a json-resume.org schema compatible or schema-enhanced (opinionated) version",
-  "main": " ",
+  "main": "",
+  "bin": {
+    "lin": "cli/lin.js"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "prepublish": "gulp prepublish"
   },
   "repository": {
     "type": "git",
@@ -25,5 +32,24 @@
   "bugs": {
     "url": "https://github.com/vrtxf/linkedin-profiler/issues"
   },
-  "homepage": "https://github.com/vrtxf/linkedin-profiler#readme"
+  "homepage": "https://github.com/vrtxf/linkedin-profiler#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "nightmare": "^2.5.2",
+    "node-linkedin": "^0.5.3",
+    "superagent": "^2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nsp": "^2.4.1",
+    "gulp-plumber": "^1.1.0",
+    "mocha": "^2.5.3",
+    "nsp": "^2.4.0",
+    "registry-url": "^3.1.0"
+  }
 }
