@@ -8,7 +8,6 @@ var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 var coveralls = require('gulp-coveralls');
-var codeclimate = require('gulp-codeclimate-reporter');
 
 gulp.task('lint', function () {
     return gulp.src(['**/*.js', '!node_modules/**'])
