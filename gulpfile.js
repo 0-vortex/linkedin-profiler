@@ -8,6 +8,7 @@ var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 var codecov = require('gulp-codecov');
+var exec = require('child_process').exec;
 
 gulp.task('lint', function () {
     return gulp.src(['**/*.js', '!node_modules/**'])
@@ -19,6 +20,14 @@ gulp.task('lint', function () {
 
 gulp.task('nsp', function (cb) {
     nsp({package: path.resolve('package.json')}, cb);
+});
+
+gulp.task('security', function (cb) {
+    exec('snyk test', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
 
 gulp.task('pre-test', function () {
@@ -59,5 +68,5 @@ gulp.task('codecov', ['test'], function () {
 });
 
 gulp.task('stats', ['codecov']);
-gulp.task('prepublish', ['nsp']);
+gulp.task('prepublish', ['nsp', 'security']);
 gulp.task('default', ['prepublish', 'lint', 'test']);

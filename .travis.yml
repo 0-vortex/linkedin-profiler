@@ -1,15 +1,21 @@
 sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
 node_js:
   - "0.12"
   - "4"
   - "5"
   - "6"
-
+notifications:
+  email: false
+before_install:
+- npm install -g gulp
+- npm install -g snyk
+- npm install -g codecov
 before_script:
 - if (( "${TRAVIS_NODE_VERSION}" >= 6 )) && [ "$TRAVIS_BRANCH" = "master" ]; then export COVERAGE_REPORT=true; else echo $TRAVIS_NODE_VERSION; fi;
-- npm install -g gulp
-- npm install -g codecov
-
+- npm prune
 after_success:
 - gulp stats
