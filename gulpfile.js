@@ -22,8 +22,24 @@ gulp.task('nsp', function (cb) {
     nsp({package: path.resolve('package.json')}, cb);
 });
 
-gulp.task('security', function (cb) {
+gulp.task('snyk', function (cb) {
+    if (!process.env.CI) {
+        return;
+    }
+
     exec('snyk test', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+gulp.task('bithound', function (cb) {
+    if (!process.env.CI) {
+        return;
+    }
+
+    exec('bithound check git@github.com:vrtxf/linkedin-profiler.git', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);
@@ -68,5 +84,5 @@ gulp.task('codecov', ['test'], function () {
 });
 
 gulp.task('stats', ['codecov']);
-gulp.task('prepublish', ['nsp', 'security']);
+gulp.task('prepublish', ['nsp', 'snyk', 'bithound']);
 gulp.task('default', ['prepublish', 'lint', 'test']);
