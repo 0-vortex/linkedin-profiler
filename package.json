@@ -1,5 +1,6 @@
 {
   "name": "linkedin-profiler",
+  "version": "0.0.0-semantically-released",
   "description": "LinkedIn profiler parser gets available information via api and outputs a json-resume.org schema compatible or schema-enhanced (opinionated) version",
   "main": "",
   "bin": {
