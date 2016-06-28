@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-var program = require('commander'),
-    nightmare = require('nightmare');
+var program = require('commander');
 
 program
     .version('0.1.0')

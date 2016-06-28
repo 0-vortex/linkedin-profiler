@@ -9,6 +9,10 @@ var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 var codecov = require('gulp-codecov');
 var exec = require('child_process').exec;
+var execOutput = function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+};
 
 gulp.task('lint', function () {
     return gulp.src(['**/*.js', '!node_modules/**'])
@@ -22,35 +26,27 @@ gulp.task('nsp', function (cb) {
     nsp({package: path.resolve('package.json')}, cb);
 });
 
-gulp.task('snyk', function (cb) {
+gulp.task('snyk', function () {
     if (!process.env.CI) {
         return;
     }
 
-    exec('snyk test', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
+    exec('snyk test', execOutput);
 });
 
-gulp.task('bithound', function (cb) {
+gulp.task('bithound', function () {
     if (!process.env.CI) {
         return;
     }
 
-    exec('bithound check git@github.com:vrtxf/linkedin-profiler.git', function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
-        cb(err);
-    });
+    exec('bithound check git@github.com:vrtxf/linkedin-profiler.git', execOutput);
 });
 
 gulp.task('pre-test', function () {
     return gulp.src([
-            'lib/**/*.js',
-            'cli/**/*.js'
-        ])
+        'lib/**/*.js',
+        'cli/**/*.js'
+    ])
         .pipe(istanbul({
             includeUntested: true
         }))
